@@ -1,0 +1,26 @@
+sku_id,product_name,units_on_hand,daily_demand,holding_cost_per_day,cost_per_unit,category
+SKU-001,Steel Hex Bolts Pack,120,6.0,0.15,12.50,Hardware
+SKU-002,Wireless Mouse,80,4.0,0.20,18.99,Electronics
+SKU-003,Cardboard Shipping Boxes,300,15.0,0.10,2.50,Packaging
+SKU-004,Cotton T-Shirts Bulk,200,10.0,0.25,6.75,Apparel
+SKU-005,Bottled Spring Water Case,500,25.0,0.08,4.20,Food & Beverage
+SKU-006,LED Light Bulbs 4-Pack,150,7.5,0.12,9.99,Electronics
+SKU-007,Plastic Storage Bins,90,3.5,0.18,14.30,Hardware
+SKU-008,Snack Bar Variety Pack,180,9.0,0.09,7.80,Food & Beverage
+SKU-009,Power Extension Cords,400,5.0,0.30,11.25,Electronics
+SKU-010,Bubble Wrap Rolls,350,6.0,0.14,5.50,Packaging
+SKU-011,Denim Jeans,220,3.0,0.40,22.00,Apparel
+SKU-012,Canned Tomato Soup,600,8.0,0.07,2.10,Food & Beverage
+SKU-013,Adjustable Wrench Set,180,2.5,0.22,19.99,Hardware
+SKU-014,USB Flash Drives 32GB,270,4.0,0.19,8.75,Electronics
+SKU-015,Poly Mailer Bags,500,7.0,0.11,1.80,Packaging
+SKU-016,Winter Jackets,140,1.0,0.50,45.00,Apparel
+SKU-017,Organic Coffee Beans,320,2.0,0.13,13.60,Food & Beverage
+SKU-018,Industrial Drill Bits Set,160,1.2,0.35,27.50,Hardware
+SKU-019,Smartphone Chargers,210,1.5,0.28,10.40,Electronics
+SKU-020,Frozen Pizza Packs,450,2.5,0.06,5.25,Food & Beverage
+SKU-021,Discontinued Nail Polish Set,300,0.0,0.17,3.90,Apparel
+SKU-022,Obsolete Router Model,150,0.0,0.45,60.00,Electronics
+SKU-023,Expired Energy Drink Cans,500,0.0,0.05,2.00,Food & Beverage
+SKU-024,Standard Paper Reams,300,10.0,0.09,3.50,Packaging
+SKU-025,Safety Gloves Pack,270,3.0,0.16,7.20,Hardware

@@ -1,0 +1,49 @@
+SKU-001: Steel Hex Bolts Pack. Category: Hardware. This pack of durable steel hex bolts is commonly used in construction, maintenance, and general repair applications across commercial and residential projects. Demand typically peaks in Q2 and Q3 during construction season, supplied by IronCore Fasteners with a minimum reorder quantity of 50 units; items should be stored in dry conditions to prevent corrosion.
+
+SKU-002: Wireless Mouse. Category: Electronics. This ergonomic wireless mouse is designed for office and home computing, offering reliable connectivity and long battery life. Demand remains steady year-round with slight increases during back-to-school and holiday seasons, sourced from TechWave Solutions with a minimum reorder quantity of 40 units; store in climate-controlled areas to protect electronic components.
+
+SKU-003: Cardboard Shipping Boxes. Category: Packaging. These corrugated cardboard boxes are essential for shipping and storage, widely used by e-commerce and logistics operations. Demand spikes in Q4 due to holiday shipping, supplied by PackRight Industries with a minimum reorder quantity of 200 units; keep in dry storage to maintain structural integrity.
+
+SKU-004: Cotton T-Shirts Bulk. Category: Apparel. These versatile cotton t-shirts are ideal for retail resale, uniforms, or promotional use, offering comfort and durability. Demand increases in spring and summer months, sourced from ComfortWear Apparel with a minimum reorder quantity of 100 units; store in clean, dry conditions to avoid moisture damage.
+
+SKU-005: Bottled Spring Water Case. Category: Food & Beverage. This case of bottled spring water is a staple for retail and bulk distribution, commonly used for hydration in offices and events. Demand peaks in summer months, supplied by PureSource Beverages with a minimum reorder quantity of 150 cases; store in cool, shaded areas to maintain quality.
+
+SKU-006: LED Light Bulbs 4-Pack. Category: Electronics. These energy-efficient LED bulbs provide long-lasting illumination for residential and commercial use. Demand is consistent year-round with slight increases during winter, sourced from BrightLite Co. with a minimum reorder quantity of 60 units; handle carefully to prevent breakage.
+
+SKU-007: Plastic Storage Bins. Category: Hardware. These durable plastic bins are used for organizing tools, supplies, and household items in warehouses and homes. Demand peaks during spring cleaning and organizational cycles, supplied by StoreMax Solutions with a minimum reorder quantity of 30 units; stack carefully to avoid deformation.
+
+SKU-008: Snack Bar Variety Pack. Category: Food & Beverage. This assortment of snack bars is popular for office pantries, schools, and retail convenience sales. Demand increases during back-to-school and travel seasons, sourced from NutriSnack Foods with a minimum reorder quantity of 80 packs; store in a cool, dry place to preserve freshness.
+
+SKU-009: Power Extension Cords. Category: Electronics. These heavy-duty extension cords are essential for powering tools and electronics in both indoor and outdoor environments. Demand peaks in Q2 and Q4, supplied by VoltEdge Manufacturing with a minimum reorder quantity of 50 units; avoid exposure to moisture during storage.
+
+SKU-010: Bubble Wrap Rolls. Category: Packaging. These protective bubble wrap rolls are used to cushion fragile items during shipping and handling. Demand rises during peak shipping seasons, especially Q4, supplied by SafePack Materials with a minimum reorder quantity of 100 rolls; store in a clean, dry area away from sharp objects.
+
+SKU-011: Denim Jeans. Category: Apparel. These durable denim jeans are designed for everyday wear and retail distribution, offering a range of sizes and styles. Demand is highest in fall and winter seasons, sourced from BlueThread Apparel with a minimum reorder quantity of 75 units; fold and store in dry conditions to maintain fabric quality.
+
+SKU-012: Canned Tomato Soup. Category: Food & Beverage. This shelf-stable canned tomato soup is a staple food product for retail and institutional use. Demand peaks in colder months, supplied by HarvestFoods Inc. with a minimum reorder quantity of 200 cans; store in a cool, dry environment with proper rotation for shelf life.
+
+SKU-013: Adjustable Wrench Set. Category: Hardware. This versatile wrench set is commonly used by professionals and DIY enthusiasts for various mechanical tasks. Demand increases in spring and summer, sourced from ProTool Works with a minimum reorder quantity of 40 sets; store in dry conditions to prevent rust.
+
+SKU-014: USB Flash Drives 32GB. Category: Electronics. These portable storage devices are widely used for data transfer and backup across personal and business environments. Demand peaks during back-to-school and corporate procurement cycles, supplied by DataCore Electronics with a minimum reorder quantity of 100 units; keep in anti-static packaging.
+
+SKU-015: Poly Mailer Bags. Category: Packaging. These lightweight poly mailers are ideal for shipping non-fragile items such as apparel and documents. Demand increases with e-commerce activity, especially in Q4, sourced from ShipEase Supplies with a minimum reorder quantity of 500 units; store away from heat to prevent material degradation.
+
+SKU-016: Winter Jackets. Category: Apparel. These insulated winter jackets provide warmth and protection in cold weather conditions, suitable for retail distribution. Demand peaks in Q4 and early Q1, supplied by ArcticWear Co. with a minimum reorder quantity of 40 units; store in climate-controlled areas to preserve insulation quality.
+
+SKU-017: Organic Coffee Beans. Category: Food & Beverage. These premium organic coffee beans are intended for cafes, offices, and retail resale, offering rich flavor profiles. Demand is steady year-round with slight increases in colder months, sourced from GreenHarvest Coffee with a minimum reorder quantity of 60 bags; store in airtight containers to maintain freshness.
+
+SKU-018: Industrial Drill Bits Set. Category: Hardware. This set of high-strength drill bits is designed for industrial and heavy-duty applications across various materials. Demand peaks during construction seasons, supplied by TitanTooling Inc. with a minimum reorder quantity of 25 sets; store in dry cases to prevent corrosion.
+
+SKU-019: Smartphone Chargers. Category: Electronics. These universal smartphone chargers are essential accessories for personal and commercial use. Demand is consistent year-round with spikes during holiday seasons, sourced from ChargeTech Ltd. with a minimum reorder quantity of 70 units; avoid excessive heat during storage.
+
+SKU-020: Frozen Pizza Packs. Category: Food & Beverage. These frozen pizza packs are popular for quick meals in retail and food service environments. Demand increases during winter and major sporting events, supplied by QuickBake Foods with a minimum reorder quantity of 120 packs; store in freezers at consistent temperatures.
+
+SKU-021: Discontinued Nail Polish Set. Category: Apparel. This discontinued nail polish set includes assorted colors previously offered in seasonal collections. Demand is minimal and typically limited to clearance sales, sourced from StyleGlow Cosmetics with a minimum reorder quantity of 20 units; store in cool conditions to prevent drying.
+
+SKU-022: Obsolete Router Model. Category: Electronics. This older model router provides basic networking functionality but has been largely replaced by newer technology. Demand is negligible and mostly limited to legacy system replacements, supplied by NetLink Systems with a minimum reorder quantity of 10 units; store in anti-static packaging.
+
+SKU-023: Expired Energy Drink Cans. Category: Food & Beverage. These energy drink cans have exceeded their recommended shelf life and are no longer suitable for retail sale. Demand is effectively nonexistent, originally supplied by PulseBeverage Co. with no active reorder requirements; store separately for disposal processing.
+
+SKU-024: Standard Paper Reams. Category: Packaging. These standard paper reams are used for printing and office operations across various industries. Demand is steady year-round with slight increases during business cycles, supplied by OfficeCore Supplies with a minimum reorder quantity of 150 reams; keep in dry storage to prevent moisture damage.
+
+SKU-025: Safety Gloves Pack. Category: Hardware. These safety gloves provide protection for hands in industrial, construction, and warehouse environments. Demand peaks in active work seasons, supplied by SafeGrip Industries with a minimum reorder quantity of 60 packs; store in clean, dry conditions to maintain material integrity.
