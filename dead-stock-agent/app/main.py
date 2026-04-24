@@ -1,9 +1,7 @@
 # streamlit 
 import streamlit as st
-import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
-
+import altair as alt
 path = "dead-stock-agent/data"
 doc_path = f"{path}/docs"
 
@@ -32,10 +30,17 @@ if inventory_data_file is not None:
         inv_df['cost'] = cost
         inv_df['profit'] = profit
         inv_df['net_profit'] = inv_df['profit'] - inv_df['cost']
-        #inv_df['color'] = ['green' if net_profit > 0 else 'red' for net_profit in inv_df['net_profit']]
-        inv_df['positive_profit'] = inv_df['net_profit'] > 0
-        st.subheader("Inventory Analysis")
-        st.bar_chart(inv_df.set_index('sku_id')['net_profit'], color=inv_df['positive_profit'].map({True: 'green', False: 'red'}))
+        inv_df['color'] = inv_df['net_profit'].apply(lambda x: 'Profitable' if x > 0 else 'Loss')
+        st.subheader("Inventory Analysis: Net Profit ($) by Product")
+        
+        # Create Altair chart with color-coded bars
+        chart = alt.Chart(inv_df).mark_bar().encode(
+            x='product_name:N',
+            y='net_profit:Q',
+            color=alt.Color('color:N', scale=alt.Scale(domain=['Profitable', 'Loss'], range=['green', 'red']))
+        ).properties(height=400)
+        st.altair_chart(chart, width='stretch')
+        st.dataframe(inv_df)
 
 st.sidebar.header("Chat Agent")
 st.sidebar.text_input("Ask about inventory insights or recommendations:", key="chat_input")
