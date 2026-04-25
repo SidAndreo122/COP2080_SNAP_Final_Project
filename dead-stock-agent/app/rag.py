@@ -59,8 +59,15 @@ def create_retriever_tool_for_agent(vectorstore):
     
     return create_retriever_tool(
         retriever,
-        "search_knowledge_base",
-        "Ask about inventory insights or supplier policies."
+        name = "search_knowledge_base",
+        description=(
+            "Search the internal knowledge base for information about "
+            "supplier return policies, markdown authorization rules, "
+            "disposal procedures, and product catalog details for specific SKUs. "
+            "Use this when the user asks about what to do with dead or slow-moving stock, "
+            "supplier options, or product-specific handling notes."
+        ),
+        
     )
 
 @st.cache_resource
