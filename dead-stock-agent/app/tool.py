@@ -158,9 +158,10 @@ def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
                 "error":                   str(e),
             })
 
-        results.sort(
-            key = lambda r: r["result"] if r["result"] is not None else -1,
-            reverse = True,
-        )
+# after tests these lines needed to be outside the for loop
+    results.sort(
+        key = lambda r: r["result"] if r["result"] is not None else -1,
+        reverse = True,
+    )
 
-        return results
+    return results
