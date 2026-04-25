@@ -7,7 +7,7 @@ from langchain_core.tools.retriever import create_retriever_tool
 from pinecone import Pinecone, ServerlessSpec
 
 INDEX_NAME = "supply-chain-rag-index"
-DATA_PATH = "./data"
+DATA_PATH = "./data/docs"
 RAG_TOOL = None
 
 def initialize_rag_system(data_path=DATA_PATH):
@@ -49,6 +49,7 @@ def create_retriever_tool_for_agent(vectorstore):
 
 def get_rag_tool():
     global RAG_TOOL
+    
     if RAG_TOOL is not None:
         return RAG_TOOL
     else:
