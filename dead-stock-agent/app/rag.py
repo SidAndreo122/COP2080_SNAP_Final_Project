@@ -1,7 +1,7 @@
 # RAG
 
 import os
-from langchain_openai import OpenAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
@@ -10,6 +10,7 @@ from pinecone import Pinecone, ServerlessSpec
 
 INDEX_NAME = "supply-chain-rag-index"
 DATA_PATH = "./data/docs"
+DIMENSION = 768
 RAG_TOOL = None
 
 def initialize_rag_system(data_path=DATA_PATH):
@@ -18,27 +19,39 @@ def initialize_rag_system(data_path=DATA_PATH):
     if INDEX_NAME not in pc.list_indexes().names():
         pc.create_index(
             name=INDEX_NAME,
-            dimension=1536,
+            dimension=DIMENSION,
             metric='cosine',
             spec=ServerlessSpec(cloud='aws', region='us-east-1')
         )
 
-    # print(f"Loading files from {data_path}...")
-    loader = DirectoryLoader(data_path, glob="**/*.txt", loader_cls=TextLoader)
-    documents = loader.load()
+    index = pc.Index(INDEX_NAME)
+    stats = index.describe_index_stats()
     
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
-    splits = text_splitter.split_documents(documents)
-    #print(f"Split {len(documents)} files into {len(splits)} chunks.")
+    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001")
 
-    embeddings = OpenAIEmbeddings()
-    vectorstore = PineconeVectorStore.from_documents(
-        splits, 
-        embeddings, 
-        index_name=INDEX_NAME
-    )
-    
+    # this (should ?) prevent any duplications from occurring
+
+    vectorstore = None
+    if stats['total_vector_count'] == 0:
+        loader = DirectoryLoader(data_path, glob="**/*.txt", loader_cls=TextLoader)
+        documents = loader.load()
+        
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+        splits = text_splitter.split_documents(documents)
+        
+        vectorstore = PineconeVectorStore.from_documents(
+            splits, 
+            embeddings, 
+            index_name=INDEX_NAME
+        )
+    else:
+        vectorstore = PineconeVectorStore.from_existing_index(
+            index_name=INDEX_NAME,
+            embedding=embeddings
+        )
+
     return vectorstore
+
 
 def create_retriever_tool_for_agent(vectorstore):
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
