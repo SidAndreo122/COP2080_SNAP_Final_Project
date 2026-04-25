@@ -1,3 +1,5 @@
+# RAG
+
 import os
 from langchain_openai import OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
@@ -49,7 +51,7 @@ def create_retriever_tool_for_agent(vectorstore):
 
 def get_rag_tool():
     global RAG_TOOL
-    
+
     if RAG_TOOL is not None:
         return RAG_TOOL
     else:
