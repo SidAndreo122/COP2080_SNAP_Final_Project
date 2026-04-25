@@ -88,7 +88,7 @@ def detect_dead_stock(units_on_hand: float, daily_demand: float, holding_cost_pe
         }
 
 def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
-        """
+    """
     Processes a list of SKUs through the dead stock detector and returns
     results sorted by total holding cost (highest financial risk first).
  
