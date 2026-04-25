@@ -42,8 +42,16 @@ if inventory_data_file is not None:
         st.altair_chart(chart, width='stretch')
         st.dataframe(inv_df)
 
+
+from agent import run_agent
+
 st.sidebar.header("Chat Agent")
-st.sidebar.text_input("Ask about inventory insights or recommendations:", key="chat_input")
-##CALL AI PLACEHOLDER##
-if st.chat_input is not None:
-    st.sidebar.write("AI Response: This is where the AI's response will be displayed based on the user's query about inventory insights or recommendations.")
+with st.sidebar.form("Enter a question for the Agent."):
+      user_query = st.text_input("Ask the Chat Agent a question!")
+      submitted = st.form_submit_button("Submit")
+if submitted and inventory_data_file is not None and user_query:
+    response = run_agent(user_query, inv_df)
+    st.sidebar.write("AI Response:")
+    st.sidebar.write(response)
+elif submitted and inventory_data_file is None:
+      st.sidebar.warning("Please upload inventory data first.")

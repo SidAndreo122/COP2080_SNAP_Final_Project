@@ -118,25 +118,25 @@ def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
         TypeError:  if skus is not a list.
         ValueError: if skus is empty.
     """
-    if not isinstance(skus, list):
-        raise TypeError(f"skus must be a list, got {type(skus).__name__}.")
-    if len(skus) == 0:
-        raise ValueError("skus list must not be empty.")
+        if not isinstance(skus, list):
+            raise TypeError(f"skus must be a list, got {type(skus).__name__}.")
+        if len(skus) == 0:
+            raise ValueError("skus list must not be empty.")
     
-    results = []
-    for sku in skus:
-        sku_id       = sku.get("sku_id", "UNKNOWN")
-        product_name = sku.get("product_name", "Unknown Product")
-        category     = sku.get("category", "Uncategorized")
+        results = []
+        for sku in skus:
+            sku_id       = sku.get("sku_id", "UNKNOWN")
+            product_name = sku.get("product_name", "Unknown Product")
+            category     = sku.get("category", "Uncategorized")
 
-        try:
-            analysis = detect_dead_stock(
+            try:
+                analysis = detect_dead_stock(
                 units_on_hand        = float(sku["units_on_hand"]),
                 daily_demand         = float(sku["daily_demand"]),
                 holding_cost_per_day = float(sku["holding_cost_per_day"]),
                 cost_per_unit        = float(sku["cost_per_unit"]),
             )
-            results.append({
+                results.append({
                 "sku_id":       sku_id,
                 "product_name": product_name,
                 "category":     category,
@@ -144,9 +144,9 @@ def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
                 **analysis,
             })
  
-        except (ValueError, KeyError, TypeError) as e:
+            except (ValueError, KeyError, TypeError) as e:
             # Log the failure but continue processing remaining SKUs
-            results.append({
+                results.append({
                 "sku_id":                  sku_id,
                 "product_name":            product_name,
                 "category":                category,
