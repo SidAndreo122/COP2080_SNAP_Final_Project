@@ -1,6 +1,7 @@
 # RAG
 
 import os
+import streamlit as st
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -13,7 +14,7 @@ DATA_PATH = "./data/docs"
 DIMENSION = 768
 RAG_TOOL = None
 
-def initialize_rag_system(data_path=DATA_PATH):
+def initialize_rag_system(data_path=DATA_PATH) -> PineconeVectorStore:
     pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
     
     if INDEX_NAME not in pc.list_indexes().names():
@@ -62,11 +63,6 @@ def create_retriever_tool_for_agent(vectorstore):
         "Ask about inventory insights or supplier policies."
     )
 
+@st.cache_resource
 def get_rag_tool():
-    global RAG_TOOL
-
-    if RAG_TOOL is not None:
-        return RAG_TOOL
-    else:
-        RAG_TOOL = create_retriever_tool_for_agent(initialize_rag_system(DATA_PATH))
-        return RAG_TOOL
+    return create_retriever_tool_for_agent(initialize_rag_system(DATA_PATH))
