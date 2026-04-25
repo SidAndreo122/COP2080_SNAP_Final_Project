@@ -3,7 +3,7 @@
 import pandas as pd
 import pytest
 from app.tool import detect_dead_stock_batch
-from app.agent import run_agent
+from app.agent import create_agent, set_inventory_df, run_agent
 
 @pytest.fixture(scope="module")
 def sample_df():
@@ -24,8 +24,8 @@ def test_integration_pipeline(sample_df):
     assert len(tool_results) == 2
     assert tool_results[0]["severity"] is not None
 
-    # set_inventory_df(sample_df)
-    # agent = create_agent()
+    set_inventory_df(sample_df)
+    agent = create_agent()
     response = run_agent("Which products are dead stock and what should I do?", agent)
 
     assert isinstance(response, str)
