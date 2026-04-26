@@ -3,6 +3,7 @@
 import os
 import streamlit as st
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_pinecone import PineconeVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
@@ -10,8 +11,8 @@ from langchain_core.tools.retriever import create_retriever_tool
 from pinecone import Pinecone, ServerlessSpec
 
 INDEX_NAME = "supply-chain-rag-index"
-DATA_PATH = "./data/docs"
-DIMENSION = 768
+DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","data","docs")
+DIMENSION = 3072
 RAG_TOOL = None
 
 def initialize_rag_system(data_path=DATA_PATH) -> PineconeVectorStore:
@@ -28,7 +29,7 @@ def initialize_rag_system(data_path=DATA_PATH) -> PineconeVectorStore:
     index = pc.Index(INDEX_NAME)
     stats = index.describe_index_stats()
     
-    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001", google_api_key = os.environ["GEMINI_API_KEY"])
 
     # this (should ?) prevent any duplications from occurring
 
@@ -70,6 +71,13 @@ def create_retriever_tool_for_agent(vectorstore):
         
     )
 
-@st.cache_resource
-def get_rag_tool():
-    return create_retriever_tool_for_agent(initialize_rag_system(DATA_PATH))
+# Function that works for pytest and streamlit (dont need live streamlit session)
+_rag_tool_cache = None
+
+def get_rag_tool(data_path: str = DATA_PATH) -> object:
+    global _rag_tool_cache
+    if _rag_tool_cache is not None:
+        return _rag_tool_cache
+    vectorstore = initialize_rag_system(data_path)
+    _rag_tool_cache = create_retriever_tool_for_agent(vectorstore)
+    return _rag_tool_cache
