@@ -2,3 +2,8 @@
 Group 1 Final Project
 
 ## Placeholder
+
+Make sure to do
+``streamlit run app/main.py
+``
+From the root directory
