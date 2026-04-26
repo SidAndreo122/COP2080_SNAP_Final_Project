@@ -85,7 +85,7 @@ def create_agent():
 
 def run_agent(query: str, agent) -> str:
     """
-    description placeholder
+    Takes the user query and the inventory data as arguments, then returns the AI response.
     """
 
     result = agent.invoke({"messages": [("human", query)]})
