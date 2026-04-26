@@ -1,4 +1,4 @@
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -13,7 +13,7 @@ import streamlit
 from app.tool import detect_dead_stock_batch
 from app.rag import get_rag_tool
 
-load_dotenv()
+# load_dotenv()
 
 
 def get_secret(key: str) -> str:
