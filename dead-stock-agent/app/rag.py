@@ -15,6 +15,14 @@ DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","data",
 DIMENSION = 3072
 RAG_TOOL = None
 
+
+def get_secret(key: str) -> str:
+    """Reads from st.secrets when deployed, falls back to .env locally."""
+    try:
+        return st.secrets[key]
+    except Exception:
+        return os.environ[key]
+
 def initialize_rag_system(data_path=DATA_PATH) -> PineconeVectorStore:
     pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
     

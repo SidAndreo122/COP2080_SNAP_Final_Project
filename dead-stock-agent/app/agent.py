@@ -6,12 +6,22 @@ from langchain_core.output_parsers import StrOutputParser
 from langgraph.prebuilt import create_react_agent
 from langchain_core.tools import tool
 import pandas as pd
+import os
+import streamlit
 
 # Grabs the detect_dead_stock_batch function and get_rag_tool from the other file
 from app.tool import detect_dead_stock_batch
 from app.rag import get_rag_tool
 
 load_dotenv()
+
+
+def get_secret(key: str) -> str:
+    """Reads from st.secrets when deployed, falls back to .env locally."""
+    try:
+        return st.secrets[key]
+    except Exception:
+        return os.environ[key]
 
 #Initialize the Gemini LLM
 llm = ChatGoogleGenerativeAI(

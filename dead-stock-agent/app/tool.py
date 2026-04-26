@@ -91,7 +91,7 @@ def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
     """
     Processes a list of SKUs through the dead stock detector and returns
     results sorted by total holding cost (highest financial risk first).
- 
+
     Args:
         skus (list[dict]): Each dict must contain:
             - sku_id              (str)
@@ -100,10 +100,10 @@ def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
             - daily_demand        (float)
             - holding_cost_per_day(float)
             - cost_per_unit       (float)
- 
+
         Optional keys passed through to output:
             - category (str)
- 
+
     Returns:
         list[dict]: One result dict per SKU, sorted by holding cost descending.
         Each dict contains all input fields plus:
@@ -112,41 +112,40 @@ def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
             - days_of_stock_remaining(float)
             - severity               (Severity)
             - detail                 (str)
-            - error                  (str | None) – set if processing failed
- 
+            - error                  (str | None) - set if processing failed
+
     Raises:
         TypeError:  if skus is not a list.
         ValueError: if skus is empty.
     """
-        if not isinstance(skus, list):
-            raise TypeError(f"skus must be a list, got {type(skus).__name__}.")
-        if len(skus) == 0:
-            raise ValueError("skus list must not be empty.")
-    
-        results = []
-        for sku in skus:
-            sku_id       = sku.get("sku_id", "UNKNOWN")
-            product_name = sku.get("product_name", "Unknown Product")
-            category     = sku.get("category", "Uncategorized")
+    if not isinstance(skus, list):
+        raise TypeError(f"skus must be a list, got {type(skus).__name__}.")
+    if len(skus) == 0:
+        raise ValueError("skus list must not be empty.")
 
-            try:
-                analysis = detect_dead_stock(
+    results = []
+    for sku in skus:
+        sku_id       = sku.get("sku_id", "UNKNOWN")
+        product_name = sku.get("product_name", "Unknown Product")
+        category     = sku.get("category", "Uncategorized")
+
+        try:
+            analysis = detect_dead_stock(
                 units_on_hand        = float(sku["units_on_hand"]),
                 daily_demand         = float(sku["daily_demand"]),
                 holding_cost_per_day = float(sku["holding_cost_per_day"]),
                 cost_per_unit        = float(sku["cost_per_unit"]),
             )
-                results.append({
+            results.append({
                 "sku_id":       sku_id,
                 "product_name": product_name,
                 "category":     category,
                 "error":        None,
                 **analysis,
             })
- 
-            except (ValueError, KeyError, TypeError) as e:
-            # Log the failure but continue processing remaining SKUs
-                results.append({
+
+        except (ValueError, KeyError, TypeError) as e:
+            results.append({
                 "sku_id":                  sku_id,
                 "product_name":            product_name,
                 "category":                category,
@@ -158,10 +157,10 @@ def detect_dead_stock_batch(skus: list[dict]) -> list[dict]:
                 "error":                   str(e),
             })
 
-# after tests these lines needed to be outside the for loop
+    # Outside the for loop — sort after ALL SKUs are processed
     results.sort(
-        key = lambda r: r["result"] if r["result"] is not None else -1,
-        reverse = True,
+        key=lambda r: r["result"] if r["result"] is not None else -1,
+        reverse=True,
     )
 
     return results
