@@ -1,7 +1,11 @@
 # streamlit 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import streamlit as st
 import pandas as pd
 import altair as alt
+from app.agent import run_agent, create_agent, set_inventory_df
 path = "dead-stock-agent/data"
 doc_path = f"{path}/docs"
 
@@ -42,8 +46,30 @@ if inventory_data_file is not None:
         st.altair_chart(chart, width='stretch')
         st.dataframe(inv_df)
 
+
+
+@st.cache_resource
+def load_agent():
+    return create_agent()
+
 st.sidebar.header("Chat Agent")
-st.sidebar.text_input("Ask about inventory insights or recommendations:", key="chat_input")
-##CALL AI PLACEHOLDER##
-if st.chat_input is not None:
-    st.sidebar.write("AI Response: This is where the AI's response will be displayed based on the user's query about inventory insights or recommendations.")
+
+with st.sidebar.form("Enter a question for the Agent."):
+      user_query = st.text_input("Ask the Chat Agent a question!")
+      submitted = st.form_submit_button("Submit")
+if submitted:
+    if inventory_data_file is None:
+        st.sidebar.warning("Please upload inventory data first.")
+    elif not user_query:
+        st.sidebar.warning("Please enter a question.")
+    else:
+        set_inventory_df(inv_df)
+
+        agent = load_agent()
+
+        with st.sidebar:
+            with st.spinner("Thinking..."):
+                response = run_agent(user_query, agent)
+    
+        st.sidebar.write("AI Response:")
+        st.sidebar.write(response)
